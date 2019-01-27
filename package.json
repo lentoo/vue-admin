@@ -1,0 +1,43 @@
+{
+  "name": "vue-cli3-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "test": "vue-cli-service serve --mode test",
+    "build": "vue-cli-service build --mode prod && node ./scripts/upcdn.js",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "new:comp": "node ./scripts/generateComponent",
+    "new:view": "node ./scripts/generateView"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "element-ui": "^2.5.0",
+    "qs": "^6.6.0",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-plugin-unit-mocha": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "chai": "^4.1.2",
+    "chalk": "^2.4.2",
+    "compression-webpack-plugin": "^2.0.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "glob": "^7.1.3",
+    "mime": "^2.4.0",
+    "node-sass": "^4.9.0",
+    "qiniu": "^7.2.1",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
