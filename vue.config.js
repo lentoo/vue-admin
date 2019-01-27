@@ -2,7 +2,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const IS_PROD = process.env.NODE_ENV === 'production'
 const cdnDomian = 'http://ply4cszel.bkt.clouddn.com'
 module.exports = {
-  baseUrl: IS_PROD ? cdnDomian : '/',
+  publicPath: IS_PROD ? cdnDomian : '/',
   chainWebpack: config => {
     // 这里是对环境的配置，不同环境对应不同的BASE_URL，以便axios的请求地址不同
     config.plugin('define').tap(args => {
