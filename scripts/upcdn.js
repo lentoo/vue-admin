@@ -20,10 +20,10 @@ const options = {
 }
 var config = {
   qiniu: {
-    accessKey: 'RgKtuNgNV44NAXoRbwjT6Z2Ux1zAE0YAWqHnQ11-',
-    secretKey: '30XD1epTavLM0yUN1iFCOzUR9uyFO2hJWdTmRvyH',
+    accessKey: '', // accessKey
+    secretKey: '', // secretKey
     bucket: options.scope,
-    domain: 'http://ply4cszel.bkt.clouddn.com'
+    domain: '' // cdn 域名
   }
 }
 var accessKey = config.qiniu.accessKey
