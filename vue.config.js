@@ -1,4 +1,5 @@
 const CompressionPlugin = require('compression-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const IS_PROD = process.env.NODE_ENV === 'production'
 const cdnDomian = 'http://ply4cszel.bkt.clouddn.com'
 module.exports = {
@@ -60,6 +61,18 @@ module.exports = {
         })
 
       // #endregion
+
+      // #region 分析打包体积
+
+      if (process.env.IS_ANALYZE) {
+        config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
+          {
+            analyzerMode: 'static'
+          }
+        ])
+      }
+
+      // #endregion 分析打包体积
     }
   }
 }

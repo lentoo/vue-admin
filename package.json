@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "test": "vue-cli-service serve --mode test",
     "build": "vue-cli-service build --mode prod && node ./scripts/upcdn.js",
+    "analyze": "vue-cli-service build --mode analyze",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "new:comp": "node ./scripts/generateComponent",
@@ -38,6 +39,7 @@
     "node-sass": "^4.9.0",
     "qiniu": "^7.2.1",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }
