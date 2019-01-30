@@ -1,0 +1,39 @@
+/*
+ * flex 布局
+ * $direction 主轴方向
+ */
+@mixin flex($direction: column,$inline: flex) {
+  display: $inline;
+  flex-direction: $direction;
+  flex-wrap: nowrap;
+}
+// 水平垂直居中
+@mixin center($direction: column) {
+  @include flex($direction);
+  justify-content: center;
+  align-items: center;
+}
+//多行超出省略号
+@mixin ell2() {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+//宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+//字体大小、行高、字体
+@mixin ft($size, $line-height) {
+    font-size: $size;
+    line-height: $line-height;
+}
+//字体大小，颜色
+@mixin sc($size, $color) {
+    font-size: $size;
+    color: $color;
+}

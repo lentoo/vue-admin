@@ -1,0 +1,58 @@
+
+// 定义常用的类
+@for $i from 1 through 20 {
+  // 字体大小 .f8 - f20
+  @if ($i >= 8) {
+    .f#{$i} {
+      font-size: ($i * 1px);
+    }
+  }
+  // 左外边距 .ml1 - .ml20 下同
+  .ml#{$i} {
+    margin-left: ($i * 1px);
+  }
+  // 右外边距
+  .mr#{$i} {
+    margin-right: ($i * 1px);
+  }
+  // 上外边距
+  .mt#{$i} {
+    margin-top: ($i * 1px);
+  }
+  // 下外边距
+  .mb#{$i} {
+    margin-bottom: ($i * 1px);
+  }
+  // 做内边距
+  .pl#{$i} {
+    padding-left: ($i * 1px);
+  }
+  // 右内边距
+  .pr#{$i} {
+    padding-right: ($i * 1px);
+  }
+  // 上内边距
+  .pt#{$i} {
+    padding-top: ($i * 1px);
+  }
+  // 下内边距
+  .pb#{$i} {
+    padding-bottom: ($i * 1px);
+  }
+}
+// 行内元素水平居中
+.text-c {
+  text-align: center;
+}
+// 行内块元素
+.inline {
+  display: inline-block;
+}
+// 超出显示省略号
+.ell {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
