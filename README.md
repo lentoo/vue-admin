@@ -1,4 +1,4 @@
-# vue-cli-ssr-example
+# vue-cli3-project
 ## 相关文章
 1. [通过vue-cli3构建一个SSR应用程序](https://juejin.im/post/5c4a6fcd518825469414e062)
 
