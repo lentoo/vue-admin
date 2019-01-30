@@ -5,8 +5,7 @@ import store from './store'
 
 import './components'
 
-import axios from './api'
-Vue.prototype.axios = axios
+import './assets/icons'
 
 Vue.config.productionTip = false
 

@@ -2,6 +2,7 @@
   <div class="news">
     新闻页面
     <input type="file" name="" value="请选择图片" @change="uploadFile" id="file">
+    <cc-svg-icon icon-class="message"></cc-svg-icon>
   </div>
 </template>
 
