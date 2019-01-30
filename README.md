@@ -1,6 +1,6 @@
 # vue-cli3-project
 ## 相关文章
-1. [通过vue-cli3构建一个SSR应用程序](https://juejin.im/post/5c4a6fcd518825469414e062)
+1. [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062)
 
 ## 项目项目
 ### 安装依赖
