@@ -47,6 +47,7 @@ npm run new:view
 8. [x] 支持全站`js`,`css` 上传到七牛`cdn`
 9. [x] 移动端 `rem` 适配
 10. [x] 打包 `production` 环境清除 `console`
+11. [x] sprites 精灵图自动合成
 ### 未完成的功能
 1. [ ] 第三方库打包成 dll 引用
 2. [ ] 国际化
