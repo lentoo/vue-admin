@@ -1,4 +1,4 @@
-const IS_PROD = process.env.NODE_ENV === "production";
+const IS_PROD = process.env.NODE_ENV === 'production'
 const plugins = [
   [
     'component',
@@ -11,11 +11,11 @@ const plugins = [
 
 if (IS_PROD) {
   plugins.unshift([
-    "transform-remove-console",
+    'transform-remove-console',
     {
-      exclude: ["error", "warn"]
+      exclude: ['error', 'warn']
     }
-  ]);
+  ])
 }
 module.exports = {
   presets: [

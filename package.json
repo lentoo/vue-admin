@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "countup.js": "^1.9.3",
     "element-ui": "^2.5.0",
     "qs": "^6.6.0",
+    "tree-table-vue": "^1.1.0",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

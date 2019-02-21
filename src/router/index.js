@@ -1,9 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import Index from '@/views/Index.vue'
 Vue.use(Router)
 
-let routes = []
+const IndexRoute = {
+  path: '/',
+  component: Index,
+  children: []
+}
+
+let routes = [IndexRoute, {
+  path: '*',
+  redirect: '/components/count-to'
+}]
 
 const routerContext = require.context('./', true, /index\.js$/)
 routerContext.keys().forEach(route => {
@@ -15,7 +24,7 @@ routerContext.keys().forEach(route => {
   /**
   * 兼容 import export 和 require module.export 两种规范
   */
-  routes = [...routes, ...(routerModule.default || routerModule)]
+  IndexRoute.children = [...IndexRoute.children, ...(routerModule.default || routerModule)]
 })
 
 export default new Router({

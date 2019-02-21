@@ -1,28 +1,26 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getNewsList } from '../api/news'
 Vue.use(Vuex)
 const types = {
-  NEWS_LIST: 'NEWS_LIST'
+  MENU_COLLAPSE: 'MENU_COLLAPSE'
 }
 export default new Vuex.Store({
   state: {
-    [types.NEWS_LIST]: []
+    [types.MENU_COLLAPSE]: false
   },
   mutations: {
-    [types.NEWS_LIST]: (state, res) => {
-      state[types.NEWS_LIST] = res
+    [types.MENU_COLLAPSE]: (state, res) => {
+      state[types.MENU_COLLAPSE] = res
     }
   },
   actions: {
-    [types.NEWS_LIST]: async ({ commit }, params) => {
-      const res = await getNewsList(params)
-      return commit(types.NEWS_LIST, res)
+    [types.MENU_COLLAPSE]: async ({ commit }, state) => {
+      return commit(types.MENU_COLLAPSE, state)
     }
   },
   getters: {
-    getNewsResponse (state) {
-      return state[types.NEWS_LIST]
+    getMenuCollapse (state) {
+      return state[types.MENU_COLLAPSE]
     }
   }
 })

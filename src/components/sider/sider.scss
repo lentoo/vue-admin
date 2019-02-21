@@ -1,0 +1,27 @@
+$logoH: .65rem;
+.sider {
+  min-height: 100vh;
+  background: #001529;
+  &-logo {
+    height: $logoH;
+    background: #022445;
+    color: #fff;
+    line-height: $logoH;
+    text-align: center;
+    font-size: 18px;
+  }
+  .el-menu {
+    border-right: 0;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 2.8rem;
+    min-height: 400px;
+  }
+  .el-menu-item.is-active {
+    background-color: #116BBE !important;
+    color: #fff !important;
+  }
+  .cc-svg-icon {
+    margin-right: 10px;
+  }
+}
