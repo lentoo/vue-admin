@@ -9,10 +9,17 @@ const IndexRoute = {
   children: []
 }
 
-let routes = [IndexRoute, {
-  path: '*',
-  redirect: '/components/count-to'
-}]
+let routes = [
+  IndexRoute,
+  {
+    path: '/login',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue')
+  },
+  {
+    path: '*',
+    redirect: '/login'
+  }
+]
 
 const routerContext = require.context('./', true, /index\.js$/)
 routerContext.keys().forEach(route => {

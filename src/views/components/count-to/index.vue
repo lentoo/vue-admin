@@ -160,9 +160,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
-.cart-title {
-  font-weight: 700;
-  font-size: 14px;
+<style lang="scss">
+.count-to {
+  .cart-title {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .el-card__body {
+    height: 160px;
+  }
 }
 </style>

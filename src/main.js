@@ -3,18 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { Card, Button, Row, Col, Tag, Switch } from 'element-ui'
 import './components'
 import './assets/icons'
+import './lib/element-ui'
 
 Vue.config.productionTip = false
-
-Vue.component(Card.name, Card)
-Vue.component(Button.name, Button)
-Vue.component(Row.name, Row)
-Vue.component(Col.name, Col)
-Vue.component(Tag.name, Tag)
-Vue.component(Switch.name, Switch)
 
 new Vue({
   router,

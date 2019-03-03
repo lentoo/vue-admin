@@ -4,7 +4,9 @@
     <section class="right-content">
       <Header />
       <div class="viewer">
-        <router-view class="viewer-detail"></router-view>
+        <transition name="fade-move">
+          <router-view class="viewer-detail"></router-view>
+        </transition>
       </div>
     </section>
   </div>
@@ -39,14 +41,30 @@ export default {
     background: #FAFAFA;
     flex: 1;
     overflow: auto;
+    overflow-x: hidden;
     margin-top: 5px;
+    position: relative;
     @include flex;
     &-detail {
-      margin-top: 15px;
-      margin-left: 10px;
-      margin-right: 10px;
-      flex: 1;
+      padding-top: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+      width: 100%;
+      position: absolute;
     }
+  }
+  .fade-move-enter-active,.fade-move-leave-active {
+    transition: .3s all ease;
+    // position: absolute
+  }
+  .fade-move-enter,.fade-move-leave-to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  .fade-move-enter-to,.fade-move-leave {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 </style>
