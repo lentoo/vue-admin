@@ -1,4 +1,10 @@
-# vue-cli3-project
+# vue-admin
+
+![](https://img.shields.io/badge/license-MIT-0.svg)
+![](https://img.shields.io/badge/download-2M-0.svg)
+![](https://img.shields.io/badge/language-zh-0.svg)
+![](https://img.shields.io/badge/platform-win/mac-0.svg)
+![](https://img.shields.io/badge/node@latest->6.0.0-0.svg)
 ## 相关文章
 1. [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062)
 
