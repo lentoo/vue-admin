@@ -18,6 +18,11 @@ export default [
         name: '树状表格',
         path: '/components/tree-table',
         icon: 'tree'
+      },
+      {
+        name: '可拖拽列表',
+        path: '/components/drag-list',
+        icon: 'drag'
       }
     ]
   }

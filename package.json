@@ -21,6 +21,7 @@
     "tree-table-vue": "^1.1.0",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
+    "vuedraggable": "^2.19.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
