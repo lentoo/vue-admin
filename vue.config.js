@@ -6,6 +6,7 @@ const cdnDomian = 'http://ply4cszel.bkt.clouddn.com'
 module.exports = {
   publicPath: IS_PROD ? cdnDomian : '/',
   configureWebpack: () => ({
+    devtool: 'source-map',
     resolve: {
       alias: {
         '~styles': path.resolve('./src/assets/styles')

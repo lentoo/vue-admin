@@ -42,6 +42,7 @@
     "glob": "^7.1.3",
     "mime": "^2.4.0",
     "node-sass": "^4.9.0",
+    "postcss-px-to-viewport": "^1.1.0",
     "postcss-sprites": "^4.2.1",
     "qiniu": "^7.2.1",
     "sass-loader": "^7.0.1",

@@ -1,4 +1,4 @@
-$logoH: .65rem;
+$logoH: 65px;
 .sider {
   min-height: 100vh;
   background: #001529;
@@ -14,7 +14,7 @@ $logoH: .65rem;
     border-right: 0;
   }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 2.8rem;
+    width: 280px;
     min-height: 400px;
   }
   .el-menu-item.is-active {

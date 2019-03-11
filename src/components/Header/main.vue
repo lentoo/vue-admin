@@ -38,18 +38,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '~styles/index.scss';
+$headerHeight: 65px;
 .header {
-  height: .65rem;
-  line-height: .65rem;
-  padding: 0 .35rem;
+  height: $headerHeight;
+  line-height: $headerHeight;
+  padding: 0 35px;
   box-shadow: 0px 0 7px rgba(72, 72, 72, .57);
   @include flex(row);
   justify-content: flex-start;
   align-items: center;
   .menu-fold {
     cursor: pointer;
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
   }
   .header-right {
     float: right;
