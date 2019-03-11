@@ -4,12 +4,14 @@
       <cc-svg-icon class-name="menu-fold" icon-class="menu-fold" @click="handleMenuFold"></cc-svg-icon>
     </div>
     <div>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+      <!-- <el-breadcrumb separator="/"> -->
+        <transition-group tag="el-breadcrumb" separator-class="el-icon-arrow-right" name="fade-move">
+          <el-breadcrumb-item v-for="item in getBreadcrumbItems" :key="item.path">{{item.name}}</el-breadcrumb-item>
+        </transition-group>
+        <!-- <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
         <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-      </el-breadcrumb>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
+      <!-- </el-breadcrumb> -->
     </div>
 
     <div class="header-right">
@@ -26,7 +28,7 @@ Vue.component(BreadcrumbItem.name, BreadcrumbItem)
 export default {
   name: 'Header',
   computed: {
-    ...mapGetters(['getMenuCollapse'])
+    ...mapGetters(['getMenuCollapse', 'getBreadcrumbItems'])
   },
   methods: {
     ...mapActions(['MENU_COLLAPSE']),
@@ -65,6 +67,17 @@ $headerHeight: 65px;
     flex: 1;
     padding-left: 10px;
   }
-
+  .fade-move-enter-active,.fade-move-leave-active {
+    transition: .3s all ease;
+    // position: absolute
+  }
+  .fade-move-enter,.fade-move-leave-to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  .fade-move-enter-to,.fade-move-leave {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>

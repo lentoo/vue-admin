@@ -15,6 +15,8 @@
 <script>
 import Sider from '@/components/sider'
 import Header from '@/components/Header'
+import MenuConfig from '../config/menuConfig.js'
+import { mapActions } from 'vuex'
 export default {
   name: 'main',
   components: {
@@ -23,6 +25,33 @@ export default {
   },
   data () {
     return {}
+  },
+  mounted () {
+    this.changeBreadcrumb(this.$route)
+  },
+  watch: {
+    $route () {
+      console.log(this.$route)
+      this.changeBreadcrumb(this.$route)
+    }
+  },
+  methods: {
+    ...mapActions(['BREADCRUMB_ITEMS']),
+    changeBreadcrumb (route) {
+      let oneLevelMenu = {}
+      let twoLevelMenu = {}
+      MenuConfig.forEach(menu => {
+        if (menu.children) {
+          const item = menu.children.find(item => item.path === route.path)
+          if (item) {
+            oneLevelMenu = menu
+            twoLevelMenu = item
+            return false
+          }
+        }
+      })
+      this.BREADCRUMB_ITEMS([oneLevelMenu, twoLevelMenu])
+    }
   }
 }
 </script>
