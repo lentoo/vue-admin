@@ -67,7 +67,7 @@
         index-text="#"
         :data="data"
         :columns="columns"
-        :stripe="stripe"
+        :stripe="props.stripe"
         :border="props.border"
         :show-header="props.showHeader"
         :show-summary="props.showSummary"
@@ -116,7 +116,8 @@ export default {
         treeType: true,
         isFold: true,
         expandType: false,
-        selectionType: false
+        selectionType: false,
+        stripe: false
       },
       data: [
         {
