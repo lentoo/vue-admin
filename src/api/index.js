@@ -4,7 +4,7 @@ import { Message, Loading } from 'element-ui'
 const service = axios.create({
   // 设置超时时间
   timeout: 6000,
-  baseURL: process.env.BASE_URL
+  baseURL: process.env.VUE_APP_BASE_URL
 })
 service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 /**

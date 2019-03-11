@@ -2,7 +2,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const path = require('path')
 const IS_PROD = process.env.NODE_ENV === 'production'
-const cdnDomian = 'http://ply4cszel.bkt.clouddn.com'
+const cdnDomian = '/'
 module.exports = {
   publicPath: IS_PROD ? cdnDomian : '/',
   configureWebpack: () => ({
@@ -14,11 +14,6 @@ module.exports = {
     }
   }),
   chainWebpack: config => {
-    // 这里是对环境的配置，不同环境对应不同的BASE_URL，以便axios的请求地址不同
-    config.plugin('define').tap(args => {
-      args[0]['process.env'].BASE_URL = JSON.stringify(process.env.BASE_URL)
-      return args
-    })
     // #region svg-config
     const svgRule = config.module.rule('svg') // 找到svg-loader
     svgRule.uses.clear() // 清除已有的loader, 如果不这样做会添加在此loader之后
@@ -34,12 +29,24 @@ module.exports = {
     // 修改images loader 添加svg处理
     const imagesRule = config.module.rule('images')
     imagesRule.exclude.add(path.resolve('src/assets/icons'))
-    config.module
-      .rule('images')
-      .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+
     // #endregion svg-config
 
     if (process.env.NODE_ENV === 'production') {
+      // #region 图片压缩
+      config.module
+        .rule('images')
+        .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+        .use('img-loader')
+        .loader('img-loader').options({
+          plugins: [
+            require('imagemin-jpegtran')(),
+            require('imagemin-pngquant')({
+              quality: [0.75, 0.85]
+            })
+          ]
+        })
+      // #endregion
       // #region 启用GZip压缩
       config
         .plugin('compression')

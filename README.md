@@ -7,8 +7,9 @@
 ![](https://img.shields.io/badge/node@latest->6.0.0-0.svg)
 ## 相关文章
 1. [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062)
-
-## 项目项目
+## 在线预览
+[http://admin.ccode.live](http://admin.ccode.live/)
+## 项目
 ### 安装依赖
 ```
 npm install
@@ -62,13 +63,13 @@ npm run new:view
 8. [x] 支持全站`js`,`css` 上传到七牛`cdn`
 9. [x] 移动端 `rem` 适配
 10. [x] 打包 `production` 环境清除 `console`
-11. [x] sprites 精灵图自动合成
+11. [x] sprites 精灵图自动合成，支持分组
+12. [x] 图片压缩
 ### 未完成的功能
 1. [ ] 第三方库打包成 dll 引用
 2. [ ] 国际化
 3. [ ] 过滤器
-4. [ ] 图片压缩
-5. [ ] ...
+4. [ ] ...
 
 ## 欢迎关注
 欢迎关注公众号“**码上开发**”，每天分享最新技术资讯

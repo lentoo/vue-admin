@@ -6,7 +6,6 @@ module.exports = {
       spritePath: './dist/img/sprites',
       retina: true,
       filterBy: function (image) {
-        console.log('image', image)
         // Allow only png files
         if (image.url.includes('sprites')) {
           if (!/\.png$/.test(image.url)) {

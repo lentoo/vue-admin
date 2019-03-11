@@ -6,6 +6,7 @@ Vue.use(Router)
 const IndexRoute = {
   path: '/',
   component: Index,
+  redirect: '/login',
   children: []
 }
 
@@ -35,6 +36,6 @@ routerContext.keys().forEach(route => {
 })
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: routes
 })
