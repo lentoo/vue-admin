@@ -10,5 +10,9 @@ export default [
   {
     path: '/components/drag-list',
     component: () => import(/* webpackChunkName: "components-drag-list" */ '@/views/components/drag-list/index.vue')
+  },
+  {
+    path: '/components/markdown',
+    component: () => import(/* webpackChunkName: "components-markdown" */ '@/views/components/markdown/index.vue')
   }
 ]
