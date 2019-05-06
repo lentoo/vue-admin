@@ -5,11 +5,20 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 const cdnDomian = '/'
 module.exports = {
   publicPath: IS_PROD ? cdnDomian : '/',
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import '~styles/var.scss';
+        @import '~styles/mixin.scss';`
+      }
+    }
+  },
   configureWebpack: () => ({
     devtool: 'source-map',
     resolve: {
       alias: {
-        '~styles': path.resolve('./src/assets/styles')
+        '~styles': path.resolve('./src/assets/styles'),
+        '~images': path.resolve('./src/assets/images')
       }
     }
   }),

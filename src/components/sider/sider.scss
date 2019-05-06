@@ -1,7 +1,7 @@
 $logoH: 65px;
 .sider {
   min-height: 100vh;
-  background: #001529;
+  box-shadow: 1px 0 4px rgba(0,21,41,.08);
   &-logo {
     height: $logoH;
     background: #022445;
@@ -9,6 +9,7 @@ $logoH: 65px;
     line-height: $logoH;
     text-align: center;
     font-size: 18px;
+
   }
   .el-menu {
     border-right: 0;
@@ -17,9 +18,25 @@ $logoH: 65px;
     width: 280px;
     min-height: 400px;
   }
-  .el-menu-item.is-active {
-    background-color: #116BBE !important;
-    color: #fff !important;
+  .menu-dark {
+    .el-menu-item.is-active {
+      background-color: #116BBE !important;
+      color: #fff !important;
+    }
+  }
+  .menu-light {
+    .sider-logo {
+      border-bottom: 1px solid #e8e8e8;
+      border-right: 1px solid #e8e8e8;
+    }
+    .el-menu-item:hover {
+      background-color: transparent !important;
+      color: #1890ff !important;
+    }
+    .el-menu-item.is-active {
+      background-color: #e6f7ff !important;
+      color: #1890ff !important;
+    }
   }
   .cc-svg-icon {
     margin-right: 10px;

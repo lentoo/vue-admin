@@ -15,7 +15,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getMenuCollapse'])
+    ...mapGetters(['getMenuCollapse', 'getMenuStyle', 'getCurrentMenuStyle'])
   },
   created () {
     this.defaultActive = this.$route.path
@@ -56,16 +56,25 @@ export default {
 
   render () {
     return (
-      <div class="sider">
-        <div class="sider-logo">
+      <div class="sider" style={
+        {
+          backgroundColor: this.getMenuStyle.backgroundColor
+        }
+      }>
+        <div class="sider-logo"
+          style={{
+            color: this.getMenuStyle.logoColor,
+            backgroundColor: this.getMenuStyle.logoBackgroundColor
+          }}
+        >
           Vue
         </div>
         <el-menu
           default-active={this.defaultActive}
-          class="el-menu-vertical-demo"
-          background-color="#001529"
-          text-color="#fff"
-          active-text-color="#116BBE"
+          class={['el-menu-vertical-demo', this.getCurrentMenuStyle === 'light' ? 'menu-light' : 'menu-dark']}
+          background-color={this.getMenuStyle.backgroundColor}
+          text-color={this.getMenuStyle.textColor}
+          active-text-color={this.getMenuStyle.activeTextColor}
           router={true}
           collapse={this.getMenuCollapse}
           open={this.handleOpen}

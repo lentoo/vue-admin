@@ -23,6 +23,11 @@ export default [
         name: '可拖拽列表',
         path: '/components/drag-list',
         icon: 'drag'
+      },
+      {
+        name: 'Markdown 编辑器',
+        path: '/components/markdown',
+        icon: 'markdown'
       }
     ]
   },

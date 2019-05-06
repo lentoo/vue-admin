@@ -23,7 +23,7 @@
   overflow: hidden;
 }
 //宽高
-@mixin wh($width, $height) {
+@mixin wh($width, $height: $width) {
   width: $width;
   height: $height;
 }
@@ -36,4 +36,8 @@
 @mixin sc($size, $color) {
     font-size: $size;
     color: $color;
+}
+
+@mixin boxShadow($arg: 0 1px 4px rgba(0,21,41,.08)) {
+  box-shadow: $arg;
 }
