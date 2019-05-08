@@ -35,7 +35,7 @@
 
       <el-col :span="5">
         <el-card header="抽屉组件" shadow="hover">
-          <p class="mb20">自定义遮罩层央视 通过 maskStyle 属性</p>
+          <p class="mb20">自定义遮罩层样式 通过 maskStyle 属性</p>
           <el-button @click="openDrawer({
             maskStyle: {
               backgroundColor: '#000',

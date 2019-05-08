@@ -18,5 +18,9 @@ export default [
   {
     path: '/components/drawer',
     component: () => import(/* webpackChunkName: "components-drawer" */ '@/views/components/drawer/index.vue')
+  },
+  {
+    path: '/components/svg-icons',
+    component: () => import(/* webpackChunkName: "components-svg" */ '@/views/components/svg-icons/index.vue')
   }
 ]

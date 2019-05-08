@@ -33,6 +33,11 @@ export default [
         name: '抽屉',
         path: '/components/drawer',
         icon: 'drawer'
+      },
+      {
+        name: 'svg 图标',
+        path: '/components/svg-icons',
+        icon: 'svg'
       }
     ]
   },
