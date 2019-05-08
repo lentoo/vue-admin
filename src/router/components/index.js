@@ -14,5 +14,9 @@ export default [
   {
     path: '/components/markdown',
     component: () => import(/* webpackChunkName: "components-markdown" */ '@/views/components/markdown/index.vue')
+  },
+  {
+    path: '/components/drawer',
+    component: () => import(/* webpackChunkName: "components-drawer" */ '@/views/components/drawer/index.vue')
   }
 ]

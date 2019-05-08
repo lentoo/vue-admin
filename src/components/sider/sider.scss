@@ -15,12 +15,12 @@ $logoH: 65px;
     border-right: 0;
   }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 280px;
+    width: 256px;
     min-height: 400px;
   }
   .menu-dark {
     .el-menu-item.is-active {
-      background-color: #116BBE !important;
+      background-color: var(--theme-color) !important;
       color: #fff !important;
     }
   }

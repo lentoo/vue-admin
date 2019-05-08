@@ -28,6 +28,11 @@ export default [
         name: 'Markdown 编辑器',
         path: '/components/markdown',
         icon: 'markdown'
+      },
+      {
+        name: '抽屉',
+        path: '/components/drawer',
+        icon: 'drawer'
       }
     ]
   },

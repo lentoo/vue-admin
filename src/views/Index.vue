@@ -145,7 +145,7 @@ export default {
   height: 48px;
   font-size: 16px;
   text-align: center;
-  background: #1890ff;
+  background: var(--theme-color);
   color: #fff;
   border-radius: 4px 0 0 4px;
   cursor: pointer;
