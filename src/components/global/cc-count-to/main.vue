@@ -193,8 +193,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .count-to {
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
-
   display: inline-block;
 }
 </style>
