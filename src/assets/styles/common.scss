@@ -1,4 +1,4 @@
-
+@import './mixin.scss';
 // 定义常用的类
 @for $i from 1 through 20 {
   // 字体大小 .f8 - f20
@@ -55,4 +55,10 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.flex-row {
+  @include flex(row);
+}
+.flex-column {
+  @include flex(column);
 }

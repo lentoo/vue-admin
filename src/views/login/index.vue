@@ -22,7 +22,7 @@
               </el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" style="width: 100%" size="small" @click="doLogin">登陆</el-button>
+              <el-button type="primary" style="width: 100%" size="small" @click="doLogin" :loading="loading">{{loading ? '正在登陆中...' : '登录'}}</el-button>
             </el-form-item>
             <p style="font-size: 12px;text-align: center;color: #999;">输入任意用户名密码登录</p>
           </el-form>
@@ -49,17 +49,21 @@ export default {
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' }
         ]
-      }
+      },
+      loading: false
     }
   },
   methods: {
     doLogin () {
+      this.loading = true
       this.$refs.form.validate(async validate => {
         if (validate) {
-          this.$message.success('登录成功')
           setTimeout(() => {
-            this.$router.push('/components/count-to')
-          }, 1000)
+            this.loading = false
+          }, 1500)
+          setTimeout(() => {
+            this.$router.push('/dashboard')
+          }, 2000)
         }
       })
     }

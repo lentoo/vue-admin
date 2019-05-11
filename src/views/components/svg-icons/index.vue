@@ -45,7 +45,6 @@ export default {
 @import '~styles/common.scss';
 .svg-icons {
   margin: 0 20px;
-  border: 1px solid #eee;
   border-right: 0;
   .svg-item {
     text-align: center;
