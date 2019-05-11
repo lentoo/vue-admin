@@ -75,7 +75,7 @@ export default {
 .cc-login {
   &-wrapper {
     height: 100vh;
-    background: url('../../assets/images/login-bg.jpg') no-repeat center center;
+    background: url('https://img.ccode.live/image/jpg/login.jpglogin-bg.29b543c1.jpg') no-repeat center center;
     background-size: cover;
   }
   &-form {
