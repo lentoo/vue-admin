@@ -131,7 +131,7 @@
       </el-col>
     </el-row>
     <el-row class="mt20" :gutter="40">
-      <el-col :span="14">
+      <el-col :span="12">
         <el-collapse-transition>
           <div v-show="showUnique">
             <el-card
@@ -192,7 +192,66 @@
           </div>
         </el-collapse-transition>
       </el-col>
-      <el-col :span="10">
+      <el-col :span="12">
+        <el-collapse-transition>
+          <div v-show="showUniquePc">
+            <el-card
+              v-loading="loadingUniquePc"
+            >
+              <div slot="header" class="clearfix">
+                <div class="card-title-box">
+                  <span class="card-title">PC Visit</span>
+                  <div>
+                    <cc-svg-icon class="icon-action-item" icon-class="refresh" @click="refreshLoadUniquePcData"></cc-svg-icon>
+                    <cc-svg-icon class="icon-action-item" icon-class="close" @click="showUniquePc = false"></cc-svg-icon>
+                  </div>
+                </div>
+              </div>
+
+              <el-row :gutter="20">
+                <el-col :span="6">
+                  <div class="unique-item" style="flex-direction: column;">
+                    <cc-count-to
+                      style="font-size: 22px;font-weight: 700;color: #666;"
+                      :usegroup="true"
+                      :start="0"
+                      :end="uniqueData.pcVisitors">
+                    </cc-count-to>
+                    <p style="color: #999;margin-top: 10px;">
+                      Unique visitors
+                    </p>
+                  </div>
+                </el-col>
+                <el-col :span="9">
+                  <div class="unique-item">
+                    <div class="unique unique-progress">
+                      <el-progress type="circle" :percentage="uniqueData.windows" :stroke-width="12" color="#0067a6"></el-progress>
+                    </div>
+                    <div class="unique unique-icon">
+                      <cc-svg-icon icon-class="windows" class="unique-icon" style="color: #0067a6;"></cc-svg-icon>
+                    </div>
+                    <div class="unique unique-desc">
+                      <span>Windows</span>
+                    </div>
+                  </div>
+                </el-col>
+                <el-col :span="9">
+                  <div class="unique-item">
+                    <div class="unique unique-progress">
+                      <el-progress type="circle" :percentage="uniqueData.mac" :stroke-width="12" color="#c4b4e4"></el-progress>
+                    </div>
+                    <div class="unique unique-icon">
+                      <cc-svg-icon icon-class="mac" class="unique-icon" style="color: #c4b4e4;"></cc-svg-icon>
+                    </div>
+                    <div class="unique unique-desc">
+                      <span>Mac</span>
+                    </div>
+                  </div>
+                </el-col>
+              </el-row>
+            </el-card>
+          </div>
+        </el-collapse-transition>
         <!-- 123f -->
       </el-col>
     </el-row>
@@ -205,11 +264,13 @@ import { Progress, Loading } from 'element-ui'
 import 'element-ui/lib/theme-chalk/base.css'
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
 import VeLine from 'v-charts/lib/line.common'
+import VeRing from 'v-charts/lib/ring.common'
 import VeHistogram from 'v-charts/lib/histogram.common'
 // import VeBar from 'v-charts/lib/bar.common'
 import 'echarts/lib/component/title'
 import 'v-charts/lib/style.css'
 Vue.component(VeLine.name, VeLine)
+Vue.component(VeRing.name, VeRing)
 Vue.component(VeHistogram.name, VeHistogram)
 Vue.component(Progress.name, Progress)
 Vue.component(CollapseTransition.name, CollapseTransition)
@@ -231,8 +292,11 @@ const DATA_FROM_BACKEND = {
 }
 const DATA_UNIQUE_FROM_BACKEND = {
   visitors: 32145,
+  pcVisitors: 84552,
   iphone: 50,
-  android: 40
+  android: 40,
+  mac: 20,
+  windows: 80
 }
 
 const DATA_PV_FROM_BACKEND = (() => {
@@ -381,11 +445,16 @@ export default {
       ],
       loading: false,
       showUnique: true,
+      showUniquePc: true,
       uniqueData: {
+        pcVisitors: 0,
         visitors: 0,
         iphone: 0,
-        android: 0
+        android: 0,
+        windows: 0,
+        mac: 0
       },
+      loadingUniquePc: true,
       loadingUnique: true,
       delayTime: 1500
     }
@@ -438,6 +507,7 @@ export default {
       this.loadPvData()
     }, this.delayTime)
     this.loadUniqueData()
+    this.loadUniquePcData()
   },
   methods: {
     loadServerData () {
@@ -465,6 +535,18 @@ export default {
       DATA_UNIQUE_FROM_BACKEND.android += +(Math.random() * 5).toFixed(0)
       DATA_UNIQUE_FROM_BACKEND.iphone += +(Math.random() * 5).toFixed(0)
       this.loadingUnique = false
+    },
+    refreshLoadUniquePcData () {
+      this.loadingUniquePc = true
+      this.loadUniquePcData()
+    },
+    async loadUniquePcData () {
+      await delay(this.delayTime)
+      this.uniqueData = { ...DATA_UNIQUE_FROM_BACKEND }
+      DATA_UNIQUE_FROM_BACKEND.pcVisitors += +(Math.random() * 1000).toFixed(0)
+      DATA_UNIQUE_FROM_BACKEND.mac += +(Math.random() * 5).toFixed(0)
+      DATA_UNIQUE_FROM_BACKEND.windows += +(Math.random() * 5).toFixed(0)
+      this.loadingUniquePc = false
     }
   }
 }
