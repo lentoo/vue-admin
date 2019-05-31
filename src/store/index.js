@@ -6,7 +6,8 @@ export const types = {
   BREADCRUMB_ITEMS: 'BREADCRUMB_ITEMS',
   MENU_STYLE: 'MENU_STYLE',
   CURRENT_MENU_STYLE: 'CURRENT_MENU_STYLE',
-  SVG_ICON_NAME: 'SVG_ICON_NAME'
+  SVG_ICON_NAME: 'SVG_ICON_NAME',
+  UPDATE_USERINFO: 'UPDATE_USERINFO'
 }
 export default new Vuex.Store({
   state: {
@@ -29,7 +30,13 @@ export default new Vuex.Store({
       }
     },
     [types.CURRENT_MENU_STYLE]: 'dark',
-    [types.SVG_ICON_NAME]: []
+    [types.SVG_ICON_NAME]: [],
+    /**
+     * 用户信息
+     */
+    userInfo: {
+      name: ''
+    }
   },
   mutations: {
     [types.MENU_COLLAPSE]: (state, res) => {
@@ -43,6 +50,9 @@ export default new Vuex.Store({
     },
     [types.SVG_ICON_NAME]: (state, res) => {
       state[types.SVG_ICON_NAME] = res
+    },
+    [types.UPDATE_USERINFO]: (state, userinfo) => {
+      state.userInfo = userinfo
     }
   },
   actions: {
@@ -57,6 +67,9 @@ export default new Vuex.Store({
     },
     [types.SVG_ICON_NAME]: async ({ commit }, state) => {
       return commit(types.SVG_ICON_NAME, state)
+    },
+    updateUserInfo: async ({ commit }, userinfo) => {
+      return commit(types.UPDATE_USERINFO, userinfo)
     }
   },
   getters: {

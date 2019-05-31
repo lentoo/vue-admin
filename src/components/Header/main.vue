@@ -46,7 +46,7 @@
             opened: dropdownVivible
           }">
             <cc-svg-icon class-name='icon-avatar' icon-class='avatar'></cc-svg-icon>
-            <span>Lentoo</span>
+            <span>{{userInfo.name}}</span>
           </div>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item v-for="item in dropdownList" :key="item.name"
@@ -65,7 +65,7 @@
 <script>
 import Vue from 'vue'
 import NoticeList from '../notice-list'
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import { Breadcrumb, BreadcrumbItem, Badge } from 'element-ui'
 Vue.component(Breadcrumb.name, Breadcrumb)
 Vue.component(BreadcrumbItem.name, BreadcrumbItem)
@@ -98,6 +98,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['userInfo']),
     ...mapGetters(['getMenuCollapse', 'getBreadcrumbItems'])
   },
   methods: {

@@ -16,7 +16,7 @@
               </el-input>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input v-model="form.password" type="password" placeholder="请输入密码">
+              <el-input autofocus v-model="form.password" type="password" placeholder="请输入密码">
                 <cc-svg-icon style="padding-left: 5px;" slot="prefix" icon-class="lock"></cc-svg-icon>
                 <!-- <i slot="prefix" class="el-input__icon el-icon-date"></i> -->
               </el-input>
@@ -33,13 +33,14 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'cc-login',
 
   data () {
     return {
       form: {
-        name: '',
+        name: 'lentoo',
         password: ''
       },
       rules: {
@@ -53,11 +54,19 @@ export default {
       loading: false
     }
   },
+  computed: {
+    ...mapState(['userInfo'])
+  },
   methods: {
+    ...mapActions(['updateUserInfo']),
     doLogin () {
       this.loading = true
       this.$refs.form.validate(async validate => {
         if (validate) {
+          this.updateUserInfo({
+            name: this.form.name,
+            loginDateTime: Date.now()
+          })
           setTimeout(() => {
             this.loading = false
           }, 1500)
