@@ -64,7 +64,7 @@ npm run new:view
 6. [x] `GZIP`压缩
 7. [x] 第三方库`cdn`
 8. [x] 支持全站`js`,`css` 上传到七牛`cdn`
-9. [x] 移动端 `rem` 适配
+9. [ ] ~~移动端 `rem` 适配~~
 10. [x] 打包 `production` 环境清除 `console`
 11. [x] sprites 精灵图自动合成，支持分组
 12. [x] 图片压缩
