@@ -68,6 +68,7 @@ npm run new:view
 10. [x] 打包 `production` 环境清除 `console`
 11. [x] sprites 精灵图自动合成，支持分组
 12. [x] 图片压缩
+13. [x] Mock数据
 ### 未完成的功能
 1. [ ] 第三方库打包成 dll 引用
 2. [ ] 国际化

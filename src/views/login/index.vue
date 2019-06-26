@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions } = createNamespacedHelpers('user')
 export default {
   name: 'cc-login',
 
@@ -55,25 +56,29 @@ export default {
     }
   },
   computed: {
-    ...mapState(['userInfo'])
   },
   methods: {
-    ...mapActions(['updateUserInfo']),
+    ...mapActions(['handleLogin']),
     doLogin () {
       this.loading = true
       this.$refs.form.validate(async validate => {
         if (validate) {
-          this.updateUserInfo({
-            name: this.form.name,
+          this.handleLogin({
+            username: this.form.name,
+            password: this.form.password,
             loginDateTime: Date.now()
-          })
-          setTimeout(() => {
+          }).then(res => {
             this.loading = false
-          }, 1500)
-          setTimeout(() => {
             this.$router.push('/dashboard')
-          }, 2000)
+          })
+          // setTimeout(() => {
+          //   this.loading = false
+          // }, 1500)
+          // setTimeout(() => {
+          //   this.$router.push('/dashboard')
+          // }, 2000)
         }
+        this.loading = false
       })
     }
   }

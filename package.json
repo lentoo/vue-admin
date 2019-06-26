@@ -51,6 +51,7 @@
     "imagemin-pngquant": "^7.0.0",
     "img-loader": "^3.0.1",
     "mime": "^2.4.0",
+    "mockjs": "^1.0.1-beta3",
     "node-sass": "^4.9.0",
     "ora": "^3.4.0",
     "postcss-px-to-viewport": "^1.1.0",

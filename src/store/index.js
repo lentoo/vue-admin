@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from './modules/user'
 Vue.use(Vuex)
 export const types = {
   MENU_COLLAPSE: 'MENU_COLLAPSE',
@@ -88,5 +89,8 @@ export default new Vuex.Store({
     getSvgIconName (state) {
       return state[types.SVG_ICON_NAME]
     }
+  },
+  modules: {
+    user
   }
 })

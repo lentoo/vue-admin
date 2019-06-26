@@ -269,6 +269,7 @@ import VeHistogram from 'v-charts/lib/histogram.common'
 // import VeBar from 'v-charts/lib/bar.common'
 import 'echarts/lib/component/title'
 import 'v-charts/lib/style.css'
+import { loadNetworkPerformanceStatus, loadServerStatus, loadPvStatus, loadVisitStatus } from '../../api/dashboard'
 Vue.component(VeLine.name, VeLine)
 Vue.component(VeRing.name, VeRing)
 Vue.component(VeHistogram.name, VeHistogram)
@@ -276,82 +277,7 @@ Vue.component(Progress.name, Progress)
 Vue.component(CollapseTransition.name, CollapseTransition)
 Vue.use(Loading.directive)
 const delay = time => new Promise(resolve => setTimeout(() => resolve(), time))
-const oneWeekData = getOneWeekData()
 
-const DATA_FROM_BACKEND = {
-  columns: ['date', '上传', '下载'],
-  rows: [
-    { date: '', 上传: 1393, 下载: 1393 },
-    { date: '', 上传: 3530, 下载: 2500 },
-    { date: '', 上传: 2923, 下载: 2780 },
-    { date: '', 上传: 4000, 下载: 3500 },
-    { date: '', 上传: 2500, 下载: 2700 },
-    { date: '', 上传: 3500, 下载: 2000 },
-    { date: '', 上传: 2200, 下载: 2200 }
-  ]
-}
-const DATA_UNIQUE_FROM_BACKEND = {
-  visitors: 32145,
-  pcVisitors: 84552,
-  iphone: 50,
-  android: 40,
-  mac: 20,
-  windows: 80
-}
-
-const DATA_PV_FROM_BACKEND = (() => {
-  const visitsData = [1393, 3530, 2923, 1723, 3792, 4593, 5000]
-  const returningData = [3000, 1000, 2000, 2700, 2200, 2800, 3000]
-  const pageVisitsData = [500, 1000, 2000, 3000, 2200, 2800, 2000]
-  return {
-    visitsChartData: {
-      columns: ['date', 'Visits'],
-      rows: oneWeekData.map((week, index) => ({
-        date: week,
-        Visits: visitsData[index]
-      }))
-    },
-    returningChartData: {
-      columns: ['date', 'returning visits'],
-      rows: oneWeekData.map((week, index) => ({
-        date: week,
-        'returning visits': returningData[index]
-      }))
-    },
-    pageVisitsChartData: {
-      columns: ['date', 'returning visits'],
-      rows: oneWeekData.map((week, index) => ({
-        date: week,
-        'returning visits': pageVisitsData[index]
-      }))
-    }
-  }
-})()
-
-DATA_FROM_BACKEND.rows = DATA_FROM_BACKEND.rows.map((item, index) => {
-  item.date = oneWeekData[index]
-  return item
-})
-function getOneWeekData () {
-  // 获取系统当前时间
-  var now = new Date()
-  var nowTime = now.getTime()
-  var oneDayTime = 24 * 60 * 60 * 1000
-  var weekData = []
-  for (var i = 0; i < 7; i++) {
-    // 显示周一
-    var ShowTime = nowTime - i * oneDayTime
-    // 初始化日期时间
-    var myDate = new Date(ShowTime)
-    var year = myDate.getFullYear()
-    var month = myDate.getMonth() + 1
-    var date = myDate.getDate()
-    weekData.push(year + '-' + month + '-' + date)
-    var str = '星期' + '日一二三四五六'.charAt(myDate.getDay())
-    console.log(str)
-  }
-  return weekData.reverse()
-}
 export default {
   name: 'dashboard',
 
@@ -454,8 +380,8 @@ export default {
         windows: 0,
         mac: 0
       },
-      loadingUniquePc: true,
-      loadingUnique: true,
+      loadingUniquePc: false,
+      loadingUnique: false,
       delayTime: 1500
     }
   },
@@ -497,56 +423,67 @@ export default {
       }
     }
   },
-  created () {
+  async created () {
     this.loading = true
-
-    setTimeout(() => {
+    Promise.all([
+      this.loadNetworkData(),
+      this.loadServerData(),
+      this.loadPvData(),
+      this.loadUniqueData()
+    ]).then(() => {
       this.loading = false
-      this.loadServerData()
-      this.loadNetworkData()
-      this.loadPvData()
-    }, this.delayTime)
-    this.loadUniqueData()
-    this.loadUniquePcData()
+    })
   },
   methods: {
-    loadServerData () {
-      const serverDataValues = [40, 60, 55, 66, 90, 50]
-      this.serverData.forEach((item, index) => {
-        item.value = serverDataValues[index]
+    async loadServerData () {
+      const res = await loadServerStatus()
+      this.serverData = res.serverData
+    },
+    async loadNetworkData () {
+      const res = await loadNetworkPerformanceStatus()
+      const rows = res.networkPerformanceStatus.map(item => {
+        return {
+          date: item.date,
+          id: item.id,
+          '上传': item.upload,
+          '下载': item.download
+        }
       })
+      this.chartData = {
+        columns: ['date', '上传', '下载'],
+        rows
+      }
     },
-    loadNetworkData () {
-      this.chartData = DATA_FROM_BACKEND
-    },
-    loadPvData () {
-      this.visitsChartData = DATA_PV_FROM_BACKEND.visitsChartData
-      this.returningChartData = DATA_PV_FROM_BACKEND.returningChartData
-      this.pageVisitsChartData = DATA_PV_FROM_BACKEND.pageVisitsChartData
-    },
-    refreshLoadUniqueData () {
+    async loadPvData () {
       this.loadingUnique = true
-      this.loadUniqueData()
+      this.loadingUniquePc = true
+      const response = await loadPvStatus()
+      this.loadingUniquePc = this.loadingUnique = false
+      this.visitsChartData = response.visitsChartData
+      this.returningChartData = response.returningChartData
+      this.pageVisitsChartData = response.pageVisitsChartData
     },
-    async loadUniqueData () {
+    async refreshLoadUniqueData () {
+      this.loadingUnique = true
       await delay(this.delayTime)
-      this.uniqueData = { ...DATA_UNIQUE_FROM_BACKEND }
-      DATA_UNIQUE_FROM_BACKEND.visitors += +(Math.random() * 1000).toFixed(0)
-      DATA_UNIQUE_FROM_BACKEND.android += +(Math.random() * 5).toFixed(0)
-      DATA_UNIQUE_FROM_BACKEND.iphone += +(Math.random() * 5).toFixed(0)
+      this.uniqueData.visitors += +(Math.random() * 1000).toFixed(0)
+      this.uniqueData.android += +(Math.random() * 5).toFixed(0)
+      this.uniqueData.iphone += +(Math.random() * 5).toFixed(0)
+
       this.loadingUnique = false
     },
-    refreshLoadUniquePcData () {
+    async refreshLoadUniquePcData () {
       this.loadingUniquePc = true
-      this.loadUniquePcData()
-    },
-    async loadUniquePcData () {
       await delay(this.delayTime)
-      this.uniqueData = { ...DATA_UNIQUE_FROM_BACKEND }
-      DATA_UNIQUE_FROM_BACKEND.pcVisitors += +(Math.random() * 1000).toFixed(0)
-      DATA_UNIQUE_FROM_BACKEND.mac += +(Math.random() * 5).toFixed(0)
-      DATA_UNIQUE_FROM_BACKEND.windows += +(Math.random() * 5).toFixed(0)
+      this.uniqueData.pcVisitors += +(Math.random() * 1000).toFixed(0)
+      this.uniqueData.mac += +(Math.random() * 5).toFixed(0)
+      this.uniqueData.windows += +(Math.random() * 5).toFixed(0)
       this.loadingUniquePc = false
+    },
+    async loadUniqueData () {
+      const res = await loadVisitStatus()
+      // await delay(this.delayTime)
+      this.uniqueData = res
     }
   }
 }
@@ -567,7 +504,7 @@ export default {
   }
   .server-status-item {
     margin-bottom: 10px;
-    &-title, {
+    &-title {
       font-size: 12px;
       color: #999;
       margin-bottom: 10px;

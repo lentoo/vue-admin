@@ -1,6 +1,6 @@
 import axios from 'axios'
 import router from '../router'
-import { Message, Loading } from 'element-ui'
+import { Message } from 'element-ui'
 const service = axios.create({
   // 设置超时时间
   timeout: 6000,
@@ -13,10 +13,10 @@ service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencod
  */
 let loading = null
 service.interceptors.request.use(config => {
-  // 在请求先展示加载框
-  loading = Loading.service({
-    text: '正在加载中......'
-  })
+  // // 在请求先展示加载框
+  // loading = Loading.service({
+  //   text: '正在加载中......'
+  // })
   const token = localStorage.getItem('token')
   if (token) {
     config.headers['Authorization'] = token
@@ -31,9 +31,9 @@ service.interceptors.request.use(config => {
  */
 service.interceptors.response.use(response => {
   // 请求响应后关闭加载框
-  if (loading) {
-    loading.close()
-  }
+  // if (loading) {
+  //   loading.close()
+  // }
 
   const responseCode = response.status
   // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
