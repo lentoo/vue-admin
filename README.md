@@ -8,8 +8,7 @@
 ## 相关文章
 1. [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062)
 2. [使用 webpack 的各种插件提升你的开发效率](https://juejin.im/post/5c8852f95188257a323f5cee)
-## 在线预览
-[http://admin.ccode.live](http://admin.ccode.live/)
+
 ## 项目
 ### 安装依赖
 ```
