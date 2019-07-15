@@ -20,7 +20,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-angular": "^8.0.0",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-eslint": "^3.3.0",
     "@vue/cli-plugin-unit-mocha": "^3.3.0",
