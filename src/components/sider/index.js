@@ -31,22 +31,22 @@ export default {
     renderMenu (menus) {
       return menus.map(menu => {
         if (menu.children) {
-          const icon = menu.icon ? <cc-svg-icon icon-class={menu.icon}></cc-svg-icon> : ''
+          const icon = menu.icon ? <cc-svg-icon icon-class={menu.icon} /> : ''
           return (
             <el-submenu index={menu.path}>
               <template slot="title">
                 {icon}
-                <span>{menu.name}</span>
+                <span>{this.$t(menu.name)}</span>
               </template>
               {this.renderMenu(menu.children)}
             </el-submenu>
           )
         } else {
-          const icon = menu.icon ? <cc-svg-icon icon-class={menu.icon}></cc-svg-icon> : ''
+          const icon = menu.icon ? <cc-svg-icon icon-class={menu.icon} /> : ''
           return (
             <el-menu-item index={menu.path}>
               {icon}
-              <span slot="title">{menu.name}</span>
+              <span slot="title">{this.$t(menu.name)}</span>
             </el-menu-item>
           )
         }
@@ -56,22 +56,25 @@ export default {
 
   render () {
     return (
-      <div class="sider" style={
-        {
+      <div
+        class="sider"
+        style={{
           backgroundColor: this.getMenuStyle.backgroundColor
-        }
-      }>
-        <div class="sider-logo"
+        }}>
+        <div
+          class="sider-logo"
           style={{
             color: this.getMenuStyle.logoColor,
             backgroundColor: this.getMenuStyle.logoBackgroundColor
-          }}
-        >
+          }}>
           Vue
         </div>
         <el-menu
           default-active={this.defaultActive}
-          class={['el-menu-vertical-demo', this.getCurrentMenuStyle === 'light' ? 'menu-light' : 'menu-dark']}
+          class={[
+            'el-menu-vertical-demo',
+            this.getCurrentMenuStyle === 'light' ? 'menu-light' : 'menu-dark'
+          ]}
           background-color={this.getMenuStyle.backgroundColor}
           text-color={this.getMenuStyle.textColor}
           active-text-color={this.getMenuStyle.activeTextColor}
@@ -81,6 +84,7 @@ export default {
           close={this.handleClose}>
           {this.renderMenu(this.menuConfig)}
         </el-menu>
-      </div>)
+      </div>
+    )
   }
 }

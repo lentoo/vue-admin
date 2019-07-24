@@ -15,22 +15,40 @@
           <h3 class="drawer-setting-title">整体风格设置</h3>
           <div class="drawer-setting-block">
             <div class="drawer-setting-item" @click="changeStyle('dark')">
-              <cc-svg-icon class-name="dark-color" icon-class="dark-color" size="48px"></cc-svg-icon>
-              <i v-if="getCurrentMenuStyle==='dark'" class="style-selected el-icon-check" style="color: #1890ff"></i>
+              <cc-svg-icon
+                class-name="dark-color"
+                icon-class="dark-color"
+                size="48px"
+              ></cc-svg-icon>
+              <i
+                v-if="getCurrentMenuStyle === 'dark'"
+                class="style-selected el-icon-check"
+                style="color: #1890ff"
+              ></i>
             </div>
             <div class="drawer-setting-item" @click="changeStyle('light')">
-              <cc-svg-icon class-name="light-color" icon-class="dark-color" size="48px"></cc-svg-icon>
-              <i v-if="getCurrentMenuStyle==='light'" class="style-selected el-icon-check" style="color: #1890ff"></i>
+              <cc-svg-icon
+                class-name="light-color"
+                icon-class="dark-color"
+                size="48px"
+              ></cc-svg-icon>
+              <i
+                v-if="getCurrentMenuStyle === 'light'"
+                class="style-selected el-icon-check"
+                style="color: #1890ff"
+              ></i>
             </div>
           </div>
         </div>
       </div>
       <div class="drawer-handle" slot="handle">
         <div @click="toggleDrawer">
-          <i :class="{
-            'el-icon-s-tools': !drawerVisible,
-            'el-icon-close': drawerVisible
-          }"></i>
+          <i
+            :class="{
+              'el-icon-s-tools': !drawerVisible,
+              'el-icon-close': drawerVisible
+            }"
+          ></i>
         </div>
       </div>
     </cc-drawer>
@@ -79,6 +97,10 @@ export default {
             twoLevelMenu = item
             return false
           }
+        } else {
+          if (menu.path === route.path) {
+            oneLevelMenu = menu
+          }
         }
       })
       this.BREADCRUMB_ITEMS([oneLevelMenu, twoLevelMenu])
@@ -99,14 +121,16 @@ export default {
 <style lang="scss" scoped>
 .main {
   font-size: 14px;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
+    Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   @include flex(row);
   .right-content {
     flex: 1;
     @include flex;
   }
   .viewer {
-    background: #FAFAFA;
+    background: #fafafa;
     flex: 1;
     overflow: auto;
     overflow-x: hidden;
@@ -122,15 +146,18 @@ export default {
       position: absolute;
     }
   }
-  .fade-move-enter-active,.fade-move-leave-active {
-    transition: .3s all ease;
+  .fade-move-enter-active,
+  .fade-move-leave-active {
+    transition: 0.3s all ease;
     // position: absolute
   }
-  .fade-move-enter,.fade-move-leave-to {
+  .fade-move-enter,
+  .fade-move-leave-to {
     opacity: 0;
     transform: translateX(-100px);
   }
-  .fade-move-enter-to,.fade-move-leave {
+  .fade-move-enter-to,
+  .fade-move-leave {
     opacity: 1;
     transform: translateX(0);
   }
@@ -158,7 +185,8 @@ export default {
 }
 .drawer-setting {
   &-content {
-    .dark-color,.light-color {
+    .dark-color,
+    .light-color {
       width: 48px;
       height: 45px;
       cursor: pointer;
@@ -169,7 +197,7 @@ export default {
   }
   &-title {
     margin-bottom: 12px;
-    color: rgba(0,0,0,.85);
+    color: rgba(0, 0, 0, 0.85);
     font-size: 14px;
     line-height: 22px;
     font-weight: 500;
