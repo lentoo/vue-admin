@@ -1,62 +1,66 @@
 export default [
   {
-    name: 'Dashboard',
+    name: 'dashboard',
     path: '/dashboard',
     icon: 'dashboard'
   },
   {
-    name: '组件',
+    name: 'components',
     path: '/components',
     icon: 'component',
     children: [
       {
-        name: '数字渐变',
+        name: 'count-to',
         path: '/components/count-to',
         icon: 'rise'
       },
       {
-        name: '树状表格',
+        name: 'tree-table',
         path: '/components/tree-table',
         icon: 'tree'
       },
       {
-        name: '可拖拽列表',
+        name: 'drag-list',
         path: '/components/drag-list',
         icon: 'drag'
       },
       {
-        name: 'Markdown 编辑器',
+        name: 'markdown',
         path: '/components/markdown',
         icon: 'markdown'
       },
       {
-        name: '抽屉',
+        name: 'drawer',
         path: '/components/drawer',
         icon: 'drawer'
       },
       {
-        name: 'svg 图标',
+        name: 'svg-icons',
         path: '/components/svg-icons',
         icon: 'svg'
       }
     ]
   },
   {
-    name: '优化',
+    name: 'optimization',
     path: '/optimization',
     icon: 'optimization',
     children: [
       {
-        name: '图片自动压缩',
+        name: 'image-compression',
         path: '/optimization/image-compression',
         icon: 'compression'
       },
       {
-        name: '自动合成精灵图',
+        name: 'sprites',
         path: '/optimization/sprites',
         icon: 'sprites'
       }
     ]
+  },
+  {
+    path: '/i18n',
+    name: 'i18n',
+    icon: 'language'
   }
-
 ]
