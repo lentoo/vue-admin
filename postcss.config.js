@@ -29,16 +29,16 @@ module.exports = {
           return Promise.reject(new Error('Not a group name.'))
         }
       }
-    },
-    'postcss-px-to-viewport': {
-      viewportWidth: 1920,
-      viewportHeight: 938,
-      unitPrecision: 5,
-      viewportUnit: 'vw',
-      selectorBlackList: [],
-      minPixelValue: 1,
-      mediaQuery: false,
-      propList: ['*']
     }
+    // 'postcss-px-to-viewport': {
+    //   viewportWidth: 1920,
+    //   viewportHeight: 938,
+    //   unitPrecision: 5,
+    //   viewportUnit: 'vw',
+    //   selectorBlackList: [],
+    //   minPixelValue: 1,
+    //   mediaQuery: false,
+    //   propList: ['*']
+    // }
   }
 }

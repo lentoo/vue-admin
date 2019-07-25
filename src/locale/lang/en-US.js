@@ -13,6 +13,7 @@ export default {
   optimization: 'optimization',
   'image-compression': 'Automatic image compression',
   sprites: 'Automatic synthesis wizard',
+  'rich-text': 'Rich-Text-Editor',
   i18n: 'i18n - Internationalization',
   openDrawer: 'open drawer',
   note: 'Note',

@@ -14,6 +14,7 @@ export default {
   optimization: '優化',
   'image-compression': '圖片自動壓縮',
   sprites: '自動合成精靈圖',
+  'rich-text': '富文本編輯器',
   i18n: 'i18n - 多語言',
   openDrawer: '打開抽屜',
   note: '注',

@@ -13,6 +13,7 @@ export default {
   optimization: '优化',
   'image-compression': '图片自动压缩',
   sprites: '自动合成精灵图',
+  'rich-text': '富文本编辑器',
   i18n: 'i18n - 多语言',
   openDrawer: '打开抽屉',
   note: '注',
