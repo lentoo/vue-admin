@@ -30,6 +30,11 @@ export default [
         icon: 'markdown'
       },
       {
+        name: 'rich-text',
+        path: '/components/rich-text',
+        icon: 'rich-text'
+      },
+      {
         name: 'drawer',
         path: '/components/drawer',
         icon: 'drawer'
