@@ -8,6 +8,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
+        implementation: require('sass'),
         data: `@import '~styles/var.scss';
         @import '~styles/mixin.scss';`
       }

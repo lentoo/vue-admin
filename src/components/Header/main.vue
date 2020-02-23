@@ -169,13 +169,13 @@ $headerHeight: 65px;
     float: right;
     height: 100%;
     overflow: hidden;
-    /deep/ .el-dropdown-link {
-      cursor: pointer;
-      color: #409eff;
-    }
-    /deep/ .el-icon-arrow-down {
-      font-size: 12px;
-    }
+    // /deep/ .el-dropdown-link {
+    //   cursor: pointer;
+    //   color: #409eff;
+    // }
+    // /deep/ .el-icon-arrow-down {
+    //   font-size: 12px;
+    // }
     // color: rgba(0, 0, 0, 0.65);
     @include flex(row);
     align-items: center;
