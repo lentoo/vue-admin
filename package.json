@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "animate.css": "^3.7.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "countup.js": "^1.9.3",
     "echarts": "^4.2.1",
     "element-ui": "^2.8.2",
