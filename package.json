@@ -42,7 +42,7 @@
     "echarts": "^4.2.1",
     "element-ui": "^2.8.2",
     "js-cookie": "^2.2.0",
-    "mavon-editor": "^2.7.5",
+    "mavon-editor": "^2.8.2",
     "qs": "^6.6.0",
     "tree-table-vue": "^1.1.0",
     "v-charts": "^1.19.0",
