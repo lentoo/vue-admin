@@ -43,7 +43,7 @@
     "element-ui": "^2.8.2",
     "js-cookie": "^2.2.0",
     "mavon-editor": "^2.7.5",
-    "qs": "^6.6.0",
+    "qs": "^6.6.1",
     "tree-table-vue": "^1.1.0",
     "v-charts": "^1.19.0",
     "vue": "^2.5.21",
